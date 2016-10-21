@@ -6,6 +6,8 @@
 2. Spring, Hiberate 프레임워크에서도 가능하면 Checked Exception을 사용하지 않는 방향으로 진행
 
 3. Clean Code 
+   Checked exceptions can sometimes be useful if you are writing a critical library:
+   You must catch them. But in general application development the dependency costs outweigh the benefits
 	Checked exception VS Unchecked Exception(참조 1)
 	예외처리에 드는 비용 대비 이득을 생각해봐야 한다.
 	예시
