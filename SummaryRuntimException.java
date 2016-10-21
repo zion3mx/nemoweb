@@ -13,18 +13,18 @@
 public *** addToCart(Long purcharseNo, PurcharseInfo purcharseInfo) throws LAMPServiceException{
 	
 	if( StringUtils.isNullOrEmpty(purcharseInfo.getRequeiredInfo()) ){
-		throws new LAMPServiceException(LAMPServiceException.ErrorCode.REQUIRED_0001);
+		throws new LAMPServiceException(****ServiceException.ErrorCode.REQUIRED_0001);
 	}
 
 	Purcharse purcharse = purcharseRepository.findById(purcharseNo);
 
 	if( StringUtils.isNullOrEmpty(purcharse) ){
-		throws new LAMPServiceException(LAMPServiceException.ErrorCode.REQUIRED_0002);
+		throws new LAMPServiceException(****ServiceException.ErrorCode.REQUIRED_0002);
 	}
 }
  
 
-public class LAMPServiceException extends Exception{
+public class ****ServiceException extends Exception{
 	public enum ErrorCode {
 		REQUIRED_0001("REQUIRED_0001", "The purcharseInfo has not exist"),
 		REQUIRED_0002("REQUIRED_0002", "The purcharseRepository has not exist"),
@@ -51,12 +51,12 @@ public *** addToCart(Long purcharseNo, PurcharseInfo purcharseInfo){
 
 private occurredCustomRuntimeException( String name, String value) {
 	....
-	return new LAMPServiceRuntimeException(name, value);
+ 	throw new ****ServiceRuntimeException(name, value);
 }
 
 
 
-public class LAMPServiceRuntimeException extends RunTimeException{
+public class ****ServiceRuntimeException extends RunTimeException{
 	public enum ErrorCode {
 		REQUIRED_0001("REQUIRED_0001", "The purcharseInfo has not exist"),
 		REQUIRED_0002("REQUIRED_0002", "The purcharseRepository has not exist"),
