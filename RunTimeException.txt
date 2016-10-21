@@ -1,0 +1,54 @@
+AS-IS
+public *** addToCart(Loing purcharseNo, PurcharseInfo purcharseInfo)throws LAMPServiceException{
+	
+	if( StringUtils.isNullOrEmpty(purcharseInfo.getRequeiredInfo()) ){
+		throws new LAMPServiceException(LAMPServiceException.ErrorCode.REQUIRED_0001);
+	}
+
+	Purcharse purcharse = purcharseRepository.findById(purcharseNo);
+
+	if( StringUtils.isNullOrEmpty(purcharse) ){
+		throws new LAMPServiceException(LAMPServiceException.ErrorCode.REQUIRED_0002);
+	}
+}
+ 
+
+public class LAMPServiceException extends Exception{
+	public enum ErrorCode {
+		REQUIRED_0001("REQUIRED_0001", "The purcharseInfo has not exist"),
+		REQUIRED_0002("REQUIRED_0002", "The purcharseRepository has not exist"),
+	....
+}
+
+
+//---------------------------------------------------------------------------------------
+TO-BE
+public *** addToCart(Loing purcharseNo, PurcharseInfo purcharseInfo){
+
+	if( StringUtils.isNullOrEmpty(purcharseInfo.getRequeiredInfo()) ){
+		occurredCustomRuntimeException( getCustomerExceptinon( "name", "value") );
+	}
+
+	Purcharse purcharse = purcharseRepositiry.findById(purcharseNo);
+
+	if( StringUtils.isNullOrEmpty(purcharse) ){
+		occurredCustomRuntimeException(getCustomerExcption ("name", "value" );
+	}
+}
+
+
+private occurredCustomRuntimeException( String name, String value) {
+	....
+	return new LAMPServiceRuntimeException(name, value);
+}
+
+
+
+public class LAMPServiceRuntimeException extends RunTimeException{
+	public enum ErrorCode {
+		REQUIRED_0001("REQUIRED_0001", "The purcharseInfo has not exist"),
+		REQUIRED_0002("REQUIRED_0002", "The purcharseRepository has not exist"),
+
+	.....
+
+}
