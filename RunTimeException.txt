@@ -1,5 +1,5 @@
 AS-IS
-public *** addToCart(Loing purcharseNo, PurcharseInfo purcharseInfo) throws LAMPServiceException{
+public *** addToCart(Long purcharseNo, PurcharseInfo purcharseInfo) throws LAMPServiceException{
 	
 	if( StringUtils.isNullOrEmpty(purcharseInfo.getRequeiredInfo()) ){
 		throws new LAMPServiceException(LAMPServiceException.ErrorCode.REQUIRED_0001);
@@ -23,7 +23,7 @@ public class LAMPServiceException extends Exception{
 
 //---------------------------------------------------------------------------------------
 TO-BE
-public *** addToCart(Loing purcharseNo, PurcharseInfo purcharseInfo){
+public *** addToCart(Long purcharseNo, PurcharseInfo purcharseInfo){
 
 	if( StringUtils.isNullOrEmpty(purcharseInfo.getRequeiredInfo()) ){
 		occurredCustomRuntimeException( getCustomerExceptinon( "name", "value") );
