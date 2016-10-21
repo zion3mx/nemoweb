@@ -20,8 +20,14 @@
 
 4. chatch문으로 checked Exception을 처리하고 Unchecked Exception을 throws한다. 이런 방법이 Method Signatures를 Clean하게 한다. 
 
-*/
 
+https://www.javacodegeeks.com/2012/03/why-should-you-use-unchecked-exceptions.html
+
+*/
+	
+/*******************************************************************************
+  Sample 1
+*******************************************************************************/
 
 /*******************************************************************************
    AS-IS
@@ -80,3 +86,60 @@ public class ****ServiceRuntimeException extends RunTimeException{
 	.....
 
 }
+
+	
+	
+/*******************************************************************************
+  Sample 2
+*******************************************************************************/	
+	
+	
+// Bad
+public class DeviceController {
+  ...
+  public void sendShutDown() {
+    DeviceHandle handle = getHandle(DEV1);
+    // Check the state of the device
+    if (handle != DeviceHandle.INVALID) {
+      // Save the device status to the record field
+      retrieveDeviceRecord(handle);
+      // If not suspended, shut down
+      if (record.getStatus() != DEVICE_SUSPENDED) {
+        pauseDevice(handle);
+        clearDeviceWorkQueue(handle);
+        closeDevice(handle);
+      } else {
+        logger.log("Device suspended. Unable to shut down");
+      }
+    } else {
+      logger.log("Invalid handle for: " + DEV1.toString());
+    }
+  }
+  ...
+}
+// Good
+public class DeviceController {
+  ...
+  public void sendShutDown() {
+    try {
+      tryToShutDown();
+    } catch (DeviceShutDownError e) {
+      logger.log(e);
+    }
+  }
+
+  private void tryToShutDown() throws DeviceShutDownError {
+    DeviceHandle handle = getHandle(DEV1);
+    DeviceRecord record = retrieveDeviceRecord(handle);
+    pauseDevice(handle); 
+    clearDeviceWorkQueue(handle); 
+    closeDevice(handle);
+  }
+
+  private DeviceHandle getHandle(DeviceID id) {
+    ...
+    throw new DeviceShutDownError("Invalid handle for: " + id.toString());
+    ...
+  }
+  ...
+}	
