@@ -20,6 +20,8 @@
 
 4. chatch문으로 checked Exception을 처리하고 Unchecked Exception을 throws한다. 이런 방법이 Method Signatures를 Clean하게 한다. 
 
+5. 보통 Checked Exception을 UnChecked Exception처럼 많이 사용한다. 메서드의 시그니처에 대한 득과 실을 따져봐야한다. 
+
 
 https://www.javacodegeeks.com/2012/03/why-should-you-use-unchecked-exceptions.html
 
