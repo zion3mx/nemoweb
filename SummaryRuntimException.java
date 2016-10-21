@@ -10,16 +10,16 @@
 /*******************************************************************************
    AS-IS
 *******************************************************************************/
-public *** addToCart(Long purcharseNo, PurcharseInfo purcharseInfo) throws LAMPServiceException{
+public *** addToCart(Long purcharseNo, PurcharseInfo purcharseInfo) throws ****ServiceException{
 	
 	if( StringUtils.isNullOrEmpty(purcharseInfo.getRequeiredInfo()) ){
-		throws new LAMPServiceException(****ServiceException.ErrorCode.REQUIRED_0001);
+		throw new LAMPServiceException(****ServiceException.ErrorCode.REQUIRED_0001);
 	}
 
 	Purcharse purcharse = purcharseRepository.findById(purcharseNo);
 
 	if( StringUtils.isNullOrEmpty(purcharse) ){
-		throws new LAMPServiceException(****ServiceException.ErrorCode.REQUIRED_0002);
+		throw new ****ServiceException(****ServiceException.ErrorCode.REQUIRED_0002);
 	}
 }
  
@@ -38,20 +38,20 @@ public class ****ServiceException extends Exception{
 public *** addToCart(Long purcharseNo, PurcharseInfo purcharseInfo){
 
 	if( StringUtils.isNullOrEmpty(purcharseInfo.getRequeiredInfo()) ){
-		occurredCustomRuntimeException( getCustomerExceptinon( "name", "value") );
+		occurredCustomRuntimeException("name", "value") );
 	}
 
 	Purcharse purcharse = purcharseRepositiry.findById(purcharseNo);
 
 	if( StringUtils.isNullOrEmpty(purcharse) ){
-		occurredCustomRuntimeException(getCustomerExcption ("name", "value" );
+		occurredCustomRuntimeException("name", "value" );
 	}
 }
 
 
 private occurredCustomRuntimeException( String name, String value) {
 	....
- 	throw new ****ServiceRuntimeException(name, value);
+ 	throw new ****ServiceRuntimeException(****ServiceException.ErrorCode.REQUIRED_000*);
 }
 
 
